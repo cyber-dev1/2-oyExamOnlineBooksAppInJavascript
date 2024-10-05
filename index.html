@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Books</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<template class="js-books-template">
+  <li class="booksList rounded text-center mt-5 mb-3">
+    <div><img class="booksImage my-3 rounded js-book-image" src="" alt="bookImage"></div>
+    <h3 class="js-book-name">Title, books</h3>
+    <div class="mt-3 d-flex align-items-center justify-content-around">
+      <div><img src="./icons/year.svg" alt="bookYear"> <span class="js-book-year">1958</span></div>
+      <div><img src="./icons/pages.svg" alt="bookPages"> <span class="js-book-pages">209</span></div>
+      <div><img src="./icons/language.svg" alt="bookLanguage"> <span class="js-book-language">English</span>
+      </div>
+    </div>
+    <div class="mt-4"><span class="fs-5 js-book-author">hans christian andersan</span></div>
+    <div class="d-flex align-items-center justify-content-between px-2">
+      <div class="text-start p-3 mt-3"><img src="./icons/wiki-logo.svg" alt="aboutBook"><a
+          class="js-book-wiki text-decoration-none" href="">About book</a></div>
+      <div>
+        <svg role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="borderBookmark">
+          <path class="bookBookmark text-secondary" fill-rule="evenodd"
+            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+    <p class="js-book-country text-primary mt-3">Country</p>
+  </li>
+</template>
+
+<body>
+
+  <header class="siteHeader mt-2">
+    <div class="container">
+
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <img class="siteLogo" src="./icons/book-icon.svg" alt="onlineBooks">
+          <p class="mt-3 ms-2 fs-4">Online <span class="text-primary">Books</span></p>
+        </div>
+
+        <div class="booksBox">
+          <button class="bookmarkButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            My saved books
+          </button>
+          <p class="bg-danger  text-light js-bookmark-count d-none bookmarkCount">1000</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+          <div class="bookmarkRender " style="max-height: 400px; overflow-y: auto;">
+
+            <p class="js-no-books text-danger text-center"> No books saved yet !!</p>
+
+            <template class="js-bookmark-template">
+              <li class="d-block text-center border py-4 w-75 rounded mx-auto mt-3 mb-5">
+                <div class="">
+                  <img class="rounded js-bookmark-img" src="https://picsum.photos/160/220" alt="">
+                </div>
+                <div>
+                  <h3 class="my-3 js-bookmark-title">Lorem, ipsum dolor.</h3>
+                </div>
+                <div>
+                  <a class="js-bookmark-link" href="">About book</a>
+                </div>
+              </li>
+            </template>  
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="my-3">
+    <section class="hero">
+      <div class="container">
+        <div class="searchBooksBox py-3 px-3 rounded">
+          <form class="js-Form">
+            <input class=" js-search-books mx-auto form-control" type="text" placeholder="search books & author">
+            <div class="d-flex my-2">
+              <select role="button" class="js-sort-select form-select mx-2">
+                <option selected disabled hidden value="">Books sort select</option>
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+                <option value="old-year">Old year</option>
+                <option value="new-year">New year</option>
+              </select>
+              <select role="button" class="js-country-select form-select mx-2">
+                <option selected disabled hidden value="all"> All </option>
+              </select>
+              <input class="js-min-year form-control mx-2" type="number" placeholder="min year">
+              <input class="js-max-year form-control mx-2" type="number" placeholder="max year">
+              <button class="btn btn-success mx-2">
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="booksRenderBox my-3">
+      <div class="container">
+        <div class="alert alert-danger text-center mt-3 js-alert-box d-none" role="alert">
+          Siz qidirgan malumot turi mavjud emas iltimos tekshiring !!
+          <p class="js-remove-alert">
+
+          </p>
+        </div>
+        <ul class="booksUl js-list list-unstyled d-flex align-items-center justify-content-around flex-wrap">
+
+
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="/js/books.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
